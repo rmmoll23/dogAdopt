@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Adopt a Dog HomePage</title>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+ <header role="banner" id="otherViews">Adopt a Dog</header>
+ <div class="searches">
+  <form role="form" class="petSearch">
+      <h2>Find your new companion!!</h2>
+      <label for="breedList">Select a Breed</label>
+        <select id="breedList" required>
+            <option value="poodle">Poodle</option>
+            <option value="labrador">Labrador</option>
+            <option value="golden retriever">Golden Retriever</option>
+            <option value="american staffordshire">American Staffordshire</option>
+        </select>
+      <label for="zipCode">Zip Code</label>
+      <input type="text" name="zipCode" required/>
+      <button type="submit">Submit</button>
+  </form> 
+  <form role="form" class="shelterSearch">
+        <h2>Search Local Shelters</h2>
+        <label for="zipCode">Zip Code</label>
+        <input type="text" name="zipCode" required/>
+        <button type="submit">Submit</button>
+  </form> 
+  <form role="form" class="petSearch">
+            <h2>Prepare your home for your new pal!!</h2>
+            <label for="petsMart">Search for pet products</label>
+            <input type="text" name="petsMart" required/>
+            <button type="submit">Search</button>
+  </form> 
+</div>
+<div class="articles">
+    <h2>Learn about Adoption!!</h2>
+    <a href="https://bestfriends.org/resources/reasons-adopt-pet">Reasons to Adopt</a><br>
+    <a href="https://www.nylabone.com/dog101/9-things-new-adoptive-dog-parents-should-know">Things to know when Adopting</a><br>
+    <a href="https://www.petfinder.com/pet-adoption/dog-adoption/pet-adoption-checklist/">Adoption Checklist</a>
+</div>
+</body>
+</html>
