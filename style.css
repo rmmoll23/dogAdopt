@@ -113,15 +113,9 @@ a {
       text-align: center;
   }
 
-  /* .dogSearchResults {
-      background-color: red;
-      margin-left: 5%;
-      margin-right: 5%;
-      height: 600px;
-  } */
-
   .dogSearch {
       background-color: aqua;
+      padding-bottom: 40px;
   }
 
   .profile {
@@ -147,6 +141,44 @@ a {
     margin: 0.5em 0;
   }
 
+  #prevResults {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+  }
+
+  #nextResults {
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+  }
+
+  /* profile.html */
+
+#profile {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    padding: 10px 25px 25px 25px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#profileImg {
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-right: 25px;
+}
+
+
+#contactInfo {
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px 10px 25px 10px;
+    margin-bottom: 20px;
+    float: right;
+}
 
 
 
