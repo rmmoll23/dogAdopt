@@ -1,22 +1,6 @@
-// const breedEndpoint = http://api.petfinder.com/breed.list
-const query = {
-    key: '93fd0d1782907ee47a856e7d69a61895',
-    animal: 'dog',
-    format: JSON
-}
-
 function renderBreedList(breeds) {
-    const breedList = `<option value=${breeds.$t}>Poodle</option>`
+    const breedList = `<option value=${breeds.$t}>${breeds.$t}</option>`
     return breedList;
-}
-
-// const petEndpoint = http://api.petfinder.com/pet.find
-const query = {
-    key: '93fd0d1782907ee47a856e7d69a61895',
-    breed: getDogBreed(),
-    location: getZipCode(),
-    animal: 'dog',
-    format: JSON
 }
 
 function renderDogSearchResults (pets) {  
@@ -34,13 +18,6 @@ function renderDogSearchResults (pets) {
     </div>`;
     return dogSearchResults;
 
-}
-
-// const shelterEndpoint = http://api.petfinder.com/shelter.find
-const query = {
-    key: '93fd0d1782907ee47a856e7d69a61895',
-    location: getZipCode(),
-    format: JSON 
 }
 
 function renderShelterSearchResults(shelters) {
@@ -95,22 +72,29 @@ function getShelterName() {
 
 }
 
-function displayBreedList () {
-  const breedList = data.items.map((item, index) => renderBreedList(item,index));
-    
+function displayBreedList (data) {
+    // console.log(data); // Entire json result
+    const breedList = data.petfinder.breeds.breed.map((breed, index) => renderBreedList(breed,index));
+    console.log(breedList);
     $("#breedList").html(breedList);
-
 }
 
 function displayDogSearchResults() {
     const dogSearchResults = data.items.map((item, index) => renderDogSearchResults(item,index));
-    
     $(".dogSearchResults").html(dogSearchResults);
 }
 
 function displayShelterSearchResults() {
     const shelterSearchResults = data.items.map((item, index) => renderShelterSearchResults(item,index));
-    
     $(".shelterSearchResults").html(shelterSearchResults);
+}
+
+function registerHandlers() {
 
 }
+
+$(document).ready(function(){
+    console.log('Ready');
+    registerHandlers();
+    getBreedList(displayBreedList);
+});
