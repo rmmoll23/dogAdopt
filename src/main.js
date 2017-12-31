@@ -36,6 +36,23 @@ function renderShelterSearchResults(shelters) {
 
 }
 
+function renderPetProfile(pet) {
+    const shelterNameId = pet.shelterId.$t;
+    const petProfile = `
+    <div id="profile" class="col-8">
+      <h1>${pet.name.$t}</h1> 
+      <h3>${pet.breeds.breed.$t}</h3>
+      <img id="profileImg" src="${media.photos.photo[1].$t}" alt="dogName">
+      <h2>Story</h2>
+      <p>${pet.description.$t}</p>
+    </div>
+     <div class="col-3mid" id="contactInfo">
+      <h2>Contact Info</h2>
+      <p>${getShelterbyId(shelterNameId, displayShelterName)}${pet.contact.phone.$t}${pet.contact.address1.$t}${pet.contact.address2.$t}</p>
+    </div>`
+  return petProfile;
+}
+
 function displayShelterName(data) {
     const shelterName = data.petfinder.shelter.name.$t
     return shelterName;
@@ -57,7 +74,12 @@ function displayDogSearchResults(data) {
 function displayShelterSearchResults(data) {
     const shelterSearchResults = data.petfinder.shelters.shelter.map((shelter, index) => renderShelterSearchResults(shelter,index));
     // $(".shelterSearchResults").html(shelterSearchResults);
-    console.log(shelterSearchResults);
+    console.log("shelter");
+}
+
+function displayPetProfile(data) {
+    const petProfileResults = data.petfinder.pet.map((pet, index) => renderPetProfile(pet, index));
+    $(".profilePage").html(petProfileResults);
 }
 
 function registerHandlers() {
@@ -87,6 +109,13 @@ function registerHandlers() {
             findShelters(shelterZipCode, displayShelterSearchResults);
             // window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/shelter.html';
         });
+
+        // Go to pet profile page
+        $('.profile-image').on("click", function() {
+            const profileId = this.parent().attr('id');
+            window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/profile.html'
+            getPetProfile(profileId, displayPetProfile);
+        })
 }
 
 
