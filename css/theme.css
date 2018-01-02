@@ -98,7 +98,8 @@ a {
 
 /* pet.html */
 .logoImg {
-    height: 50px;
+    height: 75px;
+    width: 75px;
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 50%;
@@ -113,21 +114,22 @@ a {
       text-align: center;
   }
 
-  .dogSearch {
+  .dogSearch, shelterSearchPage{
       background-color: aqua;
       padding-bottom: 40px;
   }
 
-  .profile {
+  .profile, .shelterProfile{
     border: 1px solid #E5E5E5;
     margin-bottom: 20px;
   }
   
-  .profile-image {
+  .profile-image, .shelterProfileImage {
     width: 100%;
+    height: 150px;
   }
   
-  .profile-content {
+  .profile-content, .shelterProfileContent{
     padding: 20px;
     background-color: white;
   }
@@ -135,10 +137,12 @@ a {
   .profile-content h3 {
     margin-top: 0;
     margin-bottom: 0;
+    text-align: center;
   }
   
   .profile-content p {
     margin: 0.5em 0;
+    text-align: center;
   }
 
   #prevResults {
@@ -150,7 +154,7 @@ a {
   #nextResults {
     position: absolute;
     bottom: 2%;
-    left: 2%;
+    right: 2%;
   }
 
   /* profile.html */

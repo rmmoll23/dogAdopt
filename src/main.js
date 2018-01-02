@@ -6,13 +6,14 @@ function renderBreedList(breeds) {
 function renderDogSearchResults (pets) {  
    const shelterId = pets.shelterId.$t;
     const dogSearchResults = 
-    `<div class="col-4">
+    `<div class="col-3">
         <div class="profile" id="${pets.id.$t}">
-            <img class="profile-image" src="${pets.media.photos.photo[1].$t}" />
+        <img class="profile-image" src="${pets.media.photos.photo[0].$t}" /> 
             <div class="profile-content">
                 <h3>${pets.name.$t}</h3>
-                <p>Age: ${pets.age.$t} Breed: ${pets.breeds.breed.$t}</p>
-                <p>Shelter: ${getShelterbyId(shelterId, displayShelterName)}</p>
+                <p>Age: ${pets.age.$t}</p> 
+                <p>Breed: ${pets.breeds.breed.$t}</p>
+                
             </div>
         </div>
     </div>`;
@@ -20,14 +21,17 @@ function renderDogSearchResults (pets) {
 }
 
 function renderShelterSearchResults(shelters) {
-
+    let displayAddress = shelters.address1.$t
+    if (displayAddress === undefined) {
+        displayAddress = "No address provided";
+    }
     const shelterSearchResults = 
-    `<div class="col-4">
-        <div class="profile" id="${shelters.id.$t}">
-            <img class="profile-image" src="https://tf-assets-prod.s3.amazonaws.com/tf-curric/WEB-DEV-001/2.6.3_challenge_responsive_layout/rey_square.png" />
-            <div class="profile-content">
+    `<div class="col-3">
+        <div class="shelterProfile" id="${shelters.id.$t}">
+            <img class="shelterProfileImage" src="https://s7d1.scene7.com/is/image/PETCO/1216511-right-1"/>
+            <div class="shelterProfileContent">
                 <h3>${shelters.name.$t}</h3>
-                <p>${shelters.address1.$t}</p>
+                <p>${displayAddress}</p>
             </div>
         </div>
     </div>`;
@@ -64,17 +68,6 @@ function displayBreedList (data) {
     $("#breedList").html(breedList);
 }
 
-function displayDogSearchResults(data) {
-    const dogSearchResults = data.petfinder.pets.pet.map((pet, index) => renderDogSearchResults(pet,index));
-    // $(".dogSearchResults").html(dogSearchResults);
-    console.log(dogSearchResults);
-}
-
-function displayPetProfile(data) {
-    const petProfileResults = data.petfinder.pet.map((pet, index) => renderPetProfile(pet, index));
-    $(".profilePage").html(petProfileResults);
-}
-
 function registerHandlers() {
     // getDogBreed and getZipCode
     $('.petSearch').submit(event => {
@@ -86,9 +79,10 @@ function registerHandlers() {
         // clear out the input
         queryBreed.val("");
         queryZip.val("");
-        console.log(breed);
-        findPet(breed, zipCode, displayDogSearchResults);
-        window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/pet.html';
+
+        localStorage.setItem('petZip', zipCode);
+        localStorage.setItem('petBreed', breed);
+        window.location = 'pet.html';
     });
     
     // getShelterZipCode
@@ -104,10 +98,20 @@ function registerHandlers() {
     });
 
     // Go to pet profile page
-    $('.profile-image').on("click", function() {
-        const profileId = this.parent().attr('id');
-        window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/profile.html'
-        getPetProfile(profileId, displayPetProfile);
+    $('.dogSearchResuls').on('click', '.profile-image', function() {
+        const profileId = $(this).parent().attr('id');
+        
+        localStorage.setItem('profileId', profileId);
+        window.location = 'profile.html'
+    })
+
+    // Display pets available for a shelter
+    $('.shelterSearchResults').on('click', '.shelterProfileImage', function() {
+        console.log("click");
+        const shelterPageId = $(this).parent().attr('id');
+
+        localStorage.setItem('shelterPageId', shelterPageId);
+        window.location = 'pet.html'
     })
 }
 
@@ -118,3 +122,10 @@ $(document).ready(function(){
     registerHandlers();
     getBreedList(displayBreedList);
 }); 
+
+
+
+
+
+{/* <img class="profile-image" src="${pets.media.photos.photo[0].$t}" /> */}
+{/* <p>Shelter: ${getShelterbyId(shelterId, displayShelterName)}</p> */}
