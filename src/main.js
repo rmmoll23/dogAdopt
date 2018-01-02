@@ -17,7 +17,6 @@ function renderDogSearchResults (pets) {
         </div>
     </div>`;
     return dogSearchResults;
-
 }
 
 function renderShelterSearchResults(shelters) {
@@ -71,12 +70,6 @@ function displayDogSearchResults(data) {
     console.log(dogSearchResults);
 }
 
-function displayShelterSearchResults(data) {
-    const shelterSearchResults = data.petfinder.shelters.shelter.map((shelter, index) => renderShelterSearchResults(shelter,index));
-    // $(".shelterSearchResults").html(shelterSearchResults);
-    console.log("shelter");
-}
-
 function displayPetProfile(data) {
     const petProfileResults = data.petfinder.pet.map((pet, index) => renderPetProfile(pet, index));
     $(".profilePage").html(petProfileResults);
@@ -84,38 +77,38 @@ function displayPetProfile(data) {
 
 function registerHandlers() {
     // getDogBreed and getZipCode
-        $('.petSearch').submit(event => {
-            event.preventDefault();
-            const queryBreed = $(event.currentTarget).find('#breedList');
-            const breed = queryBreed.val();
-            const queryZip = $(event.currentTarget).find('#zipCode');
-            const zipCode = queryZip.val();
-            // clear out the input
-            queryBreed.val("");
-            queryZip.val("");
-            console.log(breed);
-            findPet(breed, zipCode, displayDogSearchResults);
-            window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/pet.html';
-        });
+    $('.petSearch').submit(event => {
+        event.preventDefault();
+        const queryBreed = $(event.currentTarget).find('#breedList');
+        const breed = queryBreed.val();
+        const queryZip = $(event.currentTarget).find('#zipCode');
+        const zipCode = queryZip.val();
+        // clear out the input
+        queryBreed.val("");
+        queryZip.val("");
+        console.log(breed);
+        findPet(breed, zipCode, displayDogSearchResults);
+        window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/pet.html';
+    });
     
     // getShelterZipCode
-        $('.shelterSearch').submit(event => {
-            event.preventDefault();
-            const queryTarget = $(event.currentTarget).find('#zipCode');
-            const shelterZipCode = queryTarget.val();
-            // clear out the input
-            queryTarget.val("");
-            console.log(shelterZipCode);
-            findShelters(shelterZipCode, displayShelterSearchResults);
-            // window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/shelter.html';
-        });
+    $('.shelterSearch').submit(event => {
+        event.preventDefault();
+        const queryTarget = $(event.currentTarget).find('#zipCode');
+        const shelterZipCode = queryTarget.val();
+        // clear out the input
+        queryTarget.val("");
 
-        // Go to pet profile page
-        $('.profile-image').on("click", function() {
-            const profileId = this.parent().attr('id');
-            window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/profile.html'
-            getPetProfile(profileId, displayPetProfile);
-        })
+        localStorage.setItem('shelterZip', shelterZipCode);
+        window.location = 'shelter.html';
+    });
+
+    // Go to pet profile page
+    $('.profile-image').on("click", function() {
+        const profileId = this.parent().attr('id');
+        window.location = 'file:///Users/rmmoll23/projects/dogAdopt/pages/profile.html'
+        getPetProfile(profileId, displayPetProfile);
+    })
 }
 
 
@@ -124,5 +117,4 @@ $(document).ready(function(){
     console.log('Ready');
     registerHandlers();
     getBreedList(displayBreedList);
-    
 }); 
