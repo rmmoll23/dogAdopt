@@ -7,6 +7,6 @@ function displayDogSearchResults(data) {
 $(document).ready(function(){
     console.log('Pet Results Loaded');
     const shelterPageId = localStorage.getItem('shelterPageId');
-    console.log(zip)
+    console.log(shelterPageId);
     getPetsAtShelter(shelterPageId, displayDogSearchResults);
-}); 
+});

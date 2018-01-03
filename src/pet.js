@@ -4,10 +4,9 @@ function displayDogSearchResults(data) {
     console.log(dogSearchResults);
 }
 
-$(document).ready(function(){
-    console.log('Pet Page Loaded');
+$(document).ready(function() {
+    console.log("petPageLoaded");
     const zip = localStorage.getItem('petZip');
     const breed = localStorage.getItem('petBreed');
-    console.log(zip)
     findPet(breed, zip, displayDogSearchResults);
 }); 

@@ -1,29 +1,47 @@
 function renderBreedList(breeds) {
-    const breedList = `<option value=${breeds.$t}>${breeds.$t}</option>`
+    const breedList = `<option value=${breeds.$t}>${breeds.$t}</option>`;
     return breedList;
 }
 
 function renderDogSearchResults (pets) {  
    const shelterId = pets.shelterId.$t;
+   const dogBreed = pets.breeds.breed;
+   let dogImg = pets.media
+   if (Object.keys(dogImg).length === 0 && dogImg.constructor === Object) {
+       let dogImg = 'https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.sainergytech.com%2Fuploads%2FNo-Image-Available.jpg&imgrefurl=http%3A%2F%2Fwww.sainergytech.com%2Fgallery%2F8&docid=3ykvw0bWmewu0M&tbnid=hs8NJbOFEtortM%3A&vet=10ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ..i&w=400&h=400&bih=692&biw=1205&q=no%20image%20available%20jpg&ved=0ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ&iact=mrc&uact=8';
+   }
+   else {
+       let dogImg = pets.media.photos.photo[1].$t;
+   }
+
     const dogSearchResults = 
     `<div class="col-3">
         <div class="profile" id="${pets.id.$t}">
-        <img class="profile-image" src="${pets.media.photos.photo[0].$t}" /> 
+        <img class="profile-image" src="${dogImg}" /> 
             <div class="profile-content">
                 <h3>${pets.name.$t}</h3>
                 <p>Age: ${pets.age.$t}</p> 
-                <p>Breed: ${pets.breeds.breed.$t}</p>
-                
+                <p>Breed: ${extractBreeds(dogBreed)}</p>
+                <p>Shelter: ${getShelterById(shelterId, displayShelterName)}</p>
             </div>
         </div>
     </div>`;
     return dogSearchResults;
 }
 
+function extractBreeds(breed) { 
+    if (Array.isArray(breed)) { 
+        return breed.map((obj) => obj.$t).join(' / '); 
+    } 
+    else {
+        return breed.$t; 
+    }
+}
+
 function renderShelterSearchResults(shelters) {
-    let displayAddress = shelters.address1.$t
+    let displayAddress = shelters.address1.$t;
     if (displayAddress === undefined) {
-        displayAddress = "No address provided";
+        displayAddress = "No address available";
     }
     const shelterSearchResults = 
     `<div class="col-3">
@@ -40,26 +58,33 @@ function renderShelterSearchResults(shelters) {
 }
 
 function renderPetProfile(pet) {
+    let shelterAddress = pet.contact.address1.$t;
+    if (shelterAddress === undefined) {
+        shelterAddress = "No address available";
+    }    
     const shelterNameId = pet.shelterId.$t;
+    const profileBreed = pet.breeds.breed;
     const petProfile = `
     <div id="profile" class="col-8">
       <h1>${pet.name.$t}</h1> 
-      <h3>${pet.breeds.breed.$t}</h3>
-      <img id="profileImg" src="${media.photos.photo[1].$t}" alt="dogName">
+      <h3>${extractBreeds(profileBreed)}</h3>
+      <img id="profileImg" src="${pet.media.photos.photo[7].$t}" alt="dogName">
       <h2>Story</h2>
       <p>${pet.description.$t}</p>
     </div>
      <div class="col-3mid" id="contactInfo">
       <h2>Contact Info</h2>
-      <p>${getShelterbyId(shelterNameId, displayShelterName)}${pet.contact.phone.$t}${pet.contact.address1.$t}${pet.contact.address2.$t}</p>
-    </div>`
+      <p>${getShelterById(shelterNameId, displayShelterName)}</p>
+      <p>Phone: ${pet.contact.phone.$t}</p>
+      <p>Address: ${pet.contact.address1.$t} ${pet.contact.address2.$t}</p>
+    </div>`;
   return petProfile;
 }
 
 function displayShelterName(data) {
-    const shelterName = data.petfinder.shelter.name.$t
+    const shelterName = data.petfinder.shelter.name.$t;
+    console.log(shelterName);
     return shelterName;
-
 }
 
 function displayBreedList (data) {
@@ -79,6 +104,7 @@ function registerHandlers() {
         // clear out the input
         queryBreed.val("");
         queryZip.val("");
+        console.log(breed);
 
         localStorage.setItem('petZip', zipCode);
         localStorage.setItem('petBreed', breed);
@@ -98,12 +124,12 @@ function registerHandlers() {
     });
 
     // Go to pet profile page
-    $('.dogSearchResuls').on('click', '.profile-image', function() {
+    $('.dogSearchResults').on('click', '.profile-image', function() {
         const profileId = $(this).parent().attr('id');
         
         localStorage.setItem('profileId', profileId);
-        window.location = 'profile.html'
-    })
+        window.location = 'profile.html';
+    });
 
     // Display pets available for a shelter
     $('.shelterSearchResults').on('click', '.shelterProfileImage', function() {
@@ -111,14 +137,13 @@ function registerHandlers() {
         const shelterPageId = $(this).parent().attr('id');
 
         localStorage.setItem('shelterPageId', shelterPageId);
-        window.location = 'pet.html'
-    })
+        window.location = 'pet.html';
+    });
 }
 
 
 
 $(document).ready(function(){
-    console.log('Ready');
     registerHandlers();
     getBreedList(displayBreedList);
 }); 
@@ -127,5 +152,4 @@ $(document).ready(function(){
 
 
 
-{/* <img class="profile-image" src="${pets.media.photos.photo[0].$t}" /> */}
-{/* <p>Shelter: ${getShelterbyId(shelterId, displayShelterName)}</p> */}
+

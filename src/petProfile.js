@@ -1,11 +1,12 @@
 function displayPetProfile(data) {
-    const petProfileResults = data.petfinder.pet.map((pet, index) => renderPetProfile(pet, index));
-    $(".profilePage").html(petProfileResults);
+    const petProfileResults = data.petfinder.pet;
+    
+    $(".profilePage").html(renderPetProfile(petProfileResults));
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     console.log('Pet Profile Loaded');
-    const profileId = localStorage.getItem('profileId');
-    console.log(profileId)
-    getPetProfile(profileId, displayPetProfile);
-}); 
+    const petId = localStorage.getItem('profileId');
+    console.log(petId);
+    getPetProfile(petId, displayPetProfile);
+});

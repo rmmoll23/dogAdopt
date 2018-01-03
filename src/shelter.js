@@ -4,7 +4,7 @@ function displayShelterSearchResults(data) {
     $(".shelterSearchResults").html(shelterSearchResults);
 }
 
-$(document).ready(function(){
+$(document).ready(function() {
     console.log('Shelter Page Loaded');
     const zip = localStorage.getItem('shelterZip');
     console.log(zip)
