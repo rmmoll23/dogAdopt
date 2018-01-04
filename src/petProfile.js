@@ -1,7 +1,10 @@
 function displayPetProfile(data) {
     const petProfileResults = data.petfinder.pet;
     
-    $(".profilePage").html(renderPetProfile(petProfileResults));
+    Promise.all(petProfileResults)
+    .then((arrResolvedPromises) => {
+        $(".profilePage").html(arrResolvedPromises);
+    })
 }
 
 $(document).ready(function() {

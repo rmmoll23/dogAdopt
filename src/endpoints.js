@@ -28,8 +28,16 @@ function findShelters(zipcode, callback){
     });
 }
 
-function findPet(breed, zipcode, callback){
+function findPet(breed, zipcode, callback) {
     $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipcode}&breed=${breed}&count=4&callback=?`)
+    .done(callback)
+    .fail(function(err){
+        console.log(err)
+    });
+}
+
+function noBreedReturn(zipCode, callback) {
+    $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipCode}&count=4&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
