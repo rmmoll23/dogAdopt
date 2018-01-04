@@ -128,6 +128,11 @@ function displayBreedList (data) {
 }
 
 function registerHandlers() {
+    // Login to home page
+    $('.login').on('click', '#login', function() {
+        window.location = 'home.html';
+    });
+
     // getDogBreed and getZipCode
     $('.petSearch').submit(event => {
         event.preventDefault();

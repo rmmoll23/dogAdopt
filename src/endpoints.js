@@ -21,7 +21,7 @@ function getShelterById(shelterId, callback){
 }
 
 function findShelters(zipcode, callback){
-    $.getJSON(`${apiBaseUrl}/shelter.find?format=json&key=${apiKey}&location=${zipcode}&count=4&callback=?`)
+    $.getJSON(`${apiBaseUrl}/shelter.find?format=json&key=${apiKey}&location=${zipcode}&count=12&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
@@ -29,7 +29,7 @@ function findShelters(zipcode, callback){
 }
 
 function findPet(breed, zipcode, callback) {
-    $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipcode}&breed=${breed}&count=4&callback=?`)
+    $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipcode}&breed=${breed}&count=12&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
@@ -37,7 +37,7 @@ function findPet(breed, zipcode, callback) {
 }
 
 function noBreedReturn(zipCode, callback) {
-    $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipCode}&count=4&callback=?`)
+    $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipCode}&count=12&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
@@ -53,7 +53,7 @@ function getPetProfile(profileId, callback) {
 }
 
 function getPetsAtShelter(shelterPageId, callback) {
-    $.getJSON(`${apiBaseUrl}/shelter.getPets?format=json&key=${apiKey}&id=${shelterPageId}&animal=dog&count=4&callback=?`)
+    $.getJSON(`${apiBaseUrl}/shelter.getPets?format=json&key=${apiKey}&id=${shelterPageId}&animal=dog&count=12&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
