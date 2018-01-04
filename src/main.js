@@ -3,30 +3,44 @@ function renderBreedList(breeds) {
     return breedList;
 }
 
-function renderDogSearchResults (pets) {  
-   const shelterId = pets.shelterId.$t;
-   const dogBreed = pets.breeds.breed;
-   let dogImg = pets.media
-   if (Object.keys(dogImg).length === 0 && dogImg.constructor === Object) {
-       let dogImg = 'https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.sainergytech.com%2Fuploads%2FNo-Image-Available.jpg&imgrefurl=http%3A%2F%2Fwww.sainergytech.com%2Fgallery%2F8&docid=3ykvw0bWmewu0M&tbnid=hs8NJbOFEtortM%3A&vet=10ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ..i&w=400&h=400&bih=692&biw=1205&q=no%20image%20available%20jpg&ved=0ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ&iact=mrc&uact=8';
-   }
-   else {
-       let dogImg = pets.media.photos.photo[1].$t;
-   }
-
-    const dogSearchResults = 
-    `<div class="col-3">
-        <div class="profile" id="${pets.id.$t}">
-        <img class="profile-image" src="${dogImg}" /> 
-            <div class="profile-content">
-                <h3>${pets.name.$t}</h3>
-                <p>Age: ${pets.age.$t}</p> 
-                <p>Breed: ${extractBreeds(dogBreed)}</p>
-                <p>Shelter: ${getShelterById(shelterId, displayShelterName)}</p>
-            </div>
-        </div>
-    </div>`;
-    return dogSearchResults;
+function renderDogSearchResults (pets) {
+    return new Promise((resolve) => {
+        const shelterId = pets.shelterId.$t;
+        const dogBreed = pets.breeds.breed;
+        let dogImg = pets.media;
+        
+        if (Object.keys(dogImg).length === 0 && dogImg.constructor === Object) {
+            dogImg = 'https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.sainergytech.com%2Fuploads%2FNo-Image-Available.jpg&imgrefurl=http%3A%2F%2Fwww.sainergytech.com%2Fgallery%2F8&docid=3ykvw0bWmewu0M&tbnid=hs8NJbOFEtortM%3A&vet=10ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ..i&w=400&h=400&bih=692&biw=1205&q=no%20image%20available%20jpg&ved=0ahUKEwjGvMWqibzYAhWpzIMKHceCBTEQMwhIKAkwCQ&iact=mrc&uact=8';
+        }
+        else {
+            if(pets.media.photos.photo.length > 6){
+                dogImg = pets.media.photos.photo[7].$t;
+            }
+            else if(pets.media.photos.photo.length > 2){
+                dogImg = pets.media.photos.photo[3].$t;
+            }
+            else{
+                dogImg = pets.media.photos.photo[0].$t;
+            }
+        }
+    
+        getShelterById(shelterId, function(data){
+            const shelterName = data.petfinder.shelter.name.$t;
+            const dogSearchResults = 
+            `<div class="col-3">
+                <div class="profile" id="${pets.id.$t}">
+                <img class="profile-image" src="${dogImg}" /> 
+                    <div class="profile-content">
+                        <h3>${pets.name.$t}</h3>
+                        <p>Age: ${pets.age.$t}</p> 
+                        <p>Breed: ${extractBreeds(dogBreed)}</p>
+                        <p>${shelterName}</p>
+                    </div>
+                </div>
+            </div>`;
+            resolve(dogSearchResults);
+        });
+    });
 }
 
 function extractBreeds(breed) { 
@@ -84,7 +98,7 @@ function renderPetProfile(pet) {
 function displayShelterName(data) {
     const shelterName = data.petfinder.shelter.name.$t;
     console.log(shelterName);
-    return shelterName;
+    $("#shelterId").html(`Shelter: ${shelterName}`);
 }
 
 function displayBreedList (data) {
@@ -108,6 +122,7 @@ function registerHandlers() {
 
         localStorage.setItem('petZip', zipCode);
         localStorage.setItem('petBreed', breed);
+        localStorage.setItem('lastPage', 'home.html');
         window.location = 'pet.html';
     });
     
@@ -133,9 +148,8 @@ function registerHandlers() {
 
     // Display pets available for a shelter
     $('.shelterSearchResults').on('click', '.shelterProfileImage', function() {
-        console.log("click");
         const shelterPageId = $(this).parent().attr('id');
-
+        localStorage.setItem('lastPage', 'shelter.html');
         localStorage.setItem('shelterPageId', shelterPageId);
         window.location = 'pet.html';
     });

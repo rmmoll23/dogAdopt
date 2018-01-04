@@ -5,8 +5,10 @@ function displayDogSearchResults(data) {
 }
 
 $(document).ready(function() {
-    console.log("petPageLoaded");
-    const zip = localStorage.getItem('petZip');
-    const breed = localStorage.getItem('petBreed');
-    findPet(breed, zip, displayDogSearchResults);
+    if(localStorage.getItem('lastPage') === 'home.html'){
+        console.log("petPageLoaded");
+        const zip = localStorage.getItem('petZip');
+        const breed = localStorage.getItem('petBreed');
+        findPet(breed, zip, displayDogSearchResults);
+    }
 }); 
