@@ -108,6 +108,7 @@ a {
     position: absolute;
     top: 2%;
     left: 2%;
+    cursor: pointer;
   }
 
   p {
@@ -168,6 +169,10 @@ a {
     padding: 10px 25px 25px 25px;
     background-color: white;
     border-radius: 5px;
+}
+
+#profile p {
+    text-align: left;
 }
 
 #profileImg {

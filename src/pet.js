@@ -4,6 +4,9 @@ function displayDogSearchResults(data) {
     if (Object.keys(dogCheck).length === 0 && dogCheck.constructor === Object) {
        noBreedReturn(zipCode, displayDogSearchResults);
        console.log("no breed");
+       const noBreedResponse = `<p>The specific breed you searched for is not available in this area.</p>  
+       <p>Go back and try another breed or look at these dogs available for adoption in the area</p>`;
+       $(".noDogReturn").prepend(noBreedResponse);
     }
         const dogSearchResults = data.petfinder.pets.pet.map((pet, index) => renderDogSearchResults(pet,index));
     
@@ -17,6 +20,7 @@ function displayDogSearchResults(data) {
 
 
 $(document).ready(function() {
+    $(".dogSearchResults").empty();
     if(localStorage.getItem('lastPage') === 'home.html'){
         console.log("petPageLoaded");
         const zip = localStorage.getItem('petZip');

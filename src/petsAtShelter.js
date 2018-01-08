@@ -1,29 +1,37 @@
 function displayShelterDogSearchResults(data) {
     console.log(data.petfinder.pets);
-    let dogNumberCheck = data.petfinder.pets;
-
-    if (Object.keys(dogNumberCheck).length === 1 && dogNumberCheck.constructor === Object) {
+    let dogNumberCheck = data.petfinder.pets.pet;
+    console.log(Array.isArray(dogNumberCheck));
+    if (Array.isArray(dogNumberCheck) === false) {
        console.log("1 result");
        let oneDogResult = data.petfinder.pets.pet;
-       renderDogSearchResults(oneDogResult);
-       Promise.all(oneDogResult)
-    .then((arrResolvedPromises) => {
-        $(".shelterDogSearchResults").html(arrResolvedPromises);
-    })
-}
-
+       console.log(oneDogResult);
+       renderDogSearchResults(oneDogResult)
+        .then((singleDog) => {
+            if (singleDog.animal.$t.toLowerCase() === "dog") {
+                $(".shelterDogSearchResults").html(singleDog);
+            }
+        })
+    }
     else {
-        const shelterDogSearchResults = data.petfinder.pets.pet.map((pet, index) => renderDogSearchResults(pet,index));
+        const pets = data.petfinder.pets.pet.filter(pet=>{
+            return pet.animal.$t.toLowerCase() === "dog"
+        })
+        const shelterDogSearchResults = pets.map((pet, index) => {
+            console.log(pet);
+            return renderDogSearchResults(pet,index);
+        });
+        console.log(shelterDogSearchResults)
+        Promise.all(shelterDogSearchResults)
+        .then((arrResolvedPromises) => {
+            $(".shelterDogSearchResults").html(arrResolvedPromises);
+        })
     }
     
-    console.log(shelterDogSearchResults)
-    Promise.all(shelterDogSearchResults)
-    .then((arrResolvedPromises) => {
-        $(".shelterDogSearchResults").html(arrResolvedPromises);
-    })
 }
 
 $(document).ready(function(){
+    $("shelterDogSearchResults").empty();
     if(localStorage.getItem('lastPage') === 'shelter.html'){
         console.log('Pet Results Loaded');
         const shelterPageId = localStorage.getItem('shelterPageId');

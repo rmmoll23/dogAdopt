@@ -6,7 +6,6 @@ function renderBreedList(breeds) {
 function renderDogSearchResults (pets) {
     return new Promise((resolve) => {
         const shelterId = pets.shelterId.$t;
-        console.log(shelterId);
         const dogBreed = pets.breeds.breed;
         let dogImg = pets.media;
         
@@ -26,7 +25,14 @@ function renderDogSearchResults (pets) {
         }
     
         getShelterById(shelterId, function(data){
-            const shelterName = data.petfinder.shelter.name.$t;
+            let shelterName = data.petfinder.shelter;
+            if (shelterName === undefined) {
+                shelterName = " ";
+            }
+            else {
+                shelterName = data.petfinder.shelter.name.$t;
+            }
+
             const dogSearchResults = 
             `<div class="col-3">
                 <div class="profile" id="${pets.id.$t}">
@@ -74,12 +80,37 @@ function renderShelterSearchResults(shelters) {
 
 function renderPetProfile(pet) {
     return new Promise((resolve) => {
-    let shelterAddress = pet.contact.address1.$t;
-    if (shelterAddress === undefined) {
-        shelterAddress = "No address available";
+    let shelterAddress1 = pet.contact.address1.$t;
+    if (shelterAddress1 === undefined) {
+        shelterAddress1 = "No address available";
+    }  
+    
+    let shelterAddress2 = pet.contact.address2.$t;
+    if (shelterAddress2 === undefined) {
+        shelterAddress2 = " ";
     }    
+
     const shelterNameId = pet.shelterId.$t;
     const profileBreed = pet.breeds.breed;
+
+    let shotStatus = pet.options.option[1].$t;
+    if (shotStatus === "hasShots") {
+        shotStatus = "has shots";
+    }
+
+    let shelterEmail = pet.contact.email.$t;
+    if (shelterEmail === undefined) {
+        shelterEmail = "No email address provided";
+    }
+
+    let dogStory = pet.description.$t;
+    if (dogStory === undefined) {
+        dogStory = "Contact shelter for more information";
+    }
+    if (dogStory === "Happiness Happens at the Humane Society of El Paso!") {
+        dogStory = "Happiness Happens at the Humane Society of El Paso! Contact shelter for more information."
+    }
+    
     let dogProfileImg = pet.media;
     console.log(dogProfileImg);
         
@@ -99,20 +130,30 @@ function renderPetProfile(pet) {
         }
 
         getShelterById(shelterNameId, function(data){
-        const shelterNameProfile = data.petfinder.shelter.name.$t;
+        let shelterNameProfile = data.petfinder.shelter.name.$t;
+            if (shelterNameProfile === undefined) {
+                shelterNameProfile = " ";
+            }
+
         const petProfile = `
             <div id="profile" class="col-8">
             <h1>${pet.name.$t}</h1> 
             <h3>${extractBreeds(profileBreed)}</h3>
+            <p>Spay/Neuter Status: ${pet.options.option[0].$t}</p>
+            <p>Shot Status: ${shotStatus}</p>
             <img id="profileImg" src="${dogProfileImg}" alt="dogName">
             <h2>Story</h2>
-            <p>${pet.description.$t}</p>
+            <p>${dogStory}</p>
             </div>
             <div class="col-3mid" id="contactInfo">
             <h2>Contact Info</h2>
             <p>${shelterNameProfile}</p>
             <p>Phone: ${pet.contact.phone.$t}</p>
-            <p>Address: ${pet.contact.address1.$t} ${pet.contact.address2.$t}</p>
+            <p>Address: ${shelterAddress1} ${shelterAddress2}</p>
+            <p>City: ${pet.contact.city.$t}</p>
+            <p>State: ${pet.contact.state.$t}</p>
+            <p>Zip Code: ${pet.contact.zip.$t}</p>
+            <p>Email: ${shelterEmail}</p>
             </div>`;
         resolve(petProfile);
         });
@@ -166,8 +207,16 @@ function registerHandlers() {
     // Go to pet profile page
     $('.dogSearchResults').on('click', '.profile-image', function() {
         const profileId = $(this).parent().attr('id');
-        
+    
         localStorage.setItem('profileId', profileId);
+        window.location = 'profile.html';
+    });
+
+    // Pet profile page from shelter dog search
+    $('.shelterDogSearchResults').on('click', '.profile-image', function() {
+        const shelterDogProfileId = $(this).parent().attr('id');
+
+        localStorage.setItem('shelterDogProfileId', shelterDogProfileId);
         window.location = 'profile.html';
     });
 
