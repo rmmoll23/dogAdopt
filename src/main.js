@@ -75,7 +75,26 @@ function renderShelterSearchResults(shelters) {
         </div>
     </div>`;
     return shelterSearchResults;
+}
 
+function renderWalmartSearchResults(items, index) {
+    const itemName = items.name;
+    const imgURL = items.mediumImage;
+    const productUrl = items.productUrl;
+    const productPage = productUrl.slice(0, -14);
+    console.log(productPage);
+
+
+    const walmartSearchResults = 
+    `<div class="col-3">
+        <div class="itemProfile">
+            <a href="${productPage}"><img class="itemImage" src="${imgURL}"/></a>
+            <div class="itemContent">
+                <h3>${itemName}</h3>
+            </div>
+        </div>
+    </div>`;
+return walmartSearchResults;
 }
 
 function renderPetProfile(pet) {
@@ -218,6 +237,18 @@ function registerHandlers() {
 
         localStorage.setItem('shelterZip', shelterZipCode);
         window.location = 'shelter.html';
+    });
+
+    // search for pet products
+    $('.walmart').submit(event => {
+        event.preventDefault();
+        const item = $(event.currentTarget).find('#walMart');
+        const itemSearch = item.val();
+        // clear out the input
+        item.val("");
+
+        localStorage.setItem('itemSearch', itemSearch);
+        window.location = 'walmartSearch.html';
     });
 
     // Go to pet profile page

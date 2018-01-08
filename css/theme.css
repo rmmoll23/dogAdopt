@@ -59,7 +59,7 @@ button [type="submit"]{
 }
 
 /* Home.html */
-.petSearch, .shelterSearch, .petsMart{
+.petSearch, .shelterSearch, .walMart{
     width: 100%;
     padding: 25px 25px 25px 25px;
     border-radius: 5px;
@@ -189,6 +189,11 @@ a {
     padding: 25px 10px 25px 10px;
     margin-bottom: 20px;
     float: right;
+}
+
+/* walmartSearchResults */
+.itemImage {
+    width: 100%;
 }
 
 
