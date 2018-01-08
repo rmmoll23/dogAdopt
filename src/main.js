@@ -80,6 +80,7 @@ function renderShelterSearchResults(shelters) {
 
 function renderPetProfile(pet) {
     return new Promise((resolve) => {
+    // address check
     let shelterAddress1 = pet.contact.address1.$t;
     if (shelterAddress1 === undefined) {
         shelterAddress1 = "No address available";
@@ -93,16 +94,30 @@ function renderPetProfile(pet) {
     const shelterNameId = pet.shelterId.$t;
     const profileBreed = pet.breeds.breed;
 
-    let shotStatus = pet.options.option[1].$t;
+    // status check
+    const shotCheck = pet.options.option;
+    let shotStatus = " ";
+    let spayNeuterStatus = " ";
+    if (shotCheck === undefined) {
+        shotStatus = "information not provided";
+        spayNeuterStatus = "information not provided";
+    }
+    if (shotCheck !== undefined) {
+        spayNeuterStatus = pet.options.option[0].$t;
+        shotStatus = pet.options.option[1].$t;
+    }
     if (shotStatus === "hasShots") {
+        console.log(shotStatus);
         shotStatus = "has shots";
     }
+   
 
     let shelterEmail = pet.contact.email.$t;
     if (shelterEmail === undefined) {
         shelterEmail = "No email address provided";
     }
 
+    // story check
     let dogStory = pet.description.$t;
     if (dogStory === undefined) {
         dogStory = "Contact shelter for more information";
@@ -111,6 +126,7 @@ function renderPetProfile(pet) {
         dogStory = "Happiness Happens at the Humane Society of El Paso! Contact shelter for more information."
     }
     
+    // img check
     let dogProfileImg = pet.media;
     console.log(dogProfileImg);
         
@@ -139,7 +155,7 @@ function renderPetProfile(pet) {
             <div id="profile" class="col-8">
             <h1>${pet.name.$t}</h1> 
             <h3>${extractBreeds(profileBreed)}</h3>
-            <p>Spay/Neuter Status: ${pet.options.option[0].$t}</p>
+            <p>Spay/Neuter Status: ${spayNeuterStatus}</p>
             <p>Shot Status: ${shotStatus}</p>
             <img id="profileImg" src="${dogProfileImg}" alt="dogName">
             <h2>Story</h2>

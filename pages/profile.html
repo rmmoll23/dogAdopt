@@ -15,10 +15,22 @@
     <link href="../css/float-grid.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=158258481483746';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
  <header role="banner" id="otherViews">Adopt a Dog</header>
  <a href="home.html"><img class="logoImg" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/40552676/1/?bust=1514728187" title="Go to home page" alt="Go to home page"/></a>
  <main role "main" class="profilePage">
     
  </main>
+ <div class="fb-share-button" data-href="https://rmmoll23.github.io/dogAdopt/pages/profile.html" data-layout="button" data-size="small" data-mobile-iframe="true">
+    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frmmoll23.github.io%2FdogAdopt%2Fpages%2Fprofile.html&amp;src=sdkpreparse">Share</a>
+</div>
 </body>
 </html>
