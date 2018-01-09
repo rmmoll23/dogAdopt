@@ -62,7 +62,7 @@ function getPetsAtShelter(shelterPageId, callback) {
 
 const walmartEndpoint = `http://api.walmartlabs.com/v1/search`;
 function getWalmartSearchResults(itemSearch, callback) {
-    $.getJSON(`${walmartEndpoint}?apiKey=zqx46w87nycunsgep2rxg9m4&format=json&id=202072&query=${itemSearch}&callback=?`)
+    $.getJSON(`${walmartEndpoint}?apiKey=zqx46w87nycunsgep2rxg9m4&format=json&categoryId=5440_202072&query=${itemSearch}&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)

@@ -25,7 +25,6 @@ function displayShelterDogSearchResults(data) {
         .then((arrResolvedPromises) => {
             $(".shelterDogSearchResults").html(arrResolvedPromises);
             if ($(".shelterDogSearchResults").html() == "") {
-                console.log("hello");
                 const noDogs = `<p class="noDogs">There are no dogs in this shelter at the moment</p>`;
                 $('.shelterDogSearchResults').html(noDogs);
         }
