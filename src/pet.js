@@ -20,7 +20,7 @@ function displayDogSearchResults(data) {
 
 
 $(document).ready(function() {
-    $(".dogSearchResults").empty();
+    
     if(localStorage.getItem('lastPage') === 'home.html'){
         console.log("petPageLoaded");
         const zip = localStorage.getItem('petZip');

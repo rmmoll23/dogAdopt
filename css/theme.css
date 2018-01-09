@@ -5,17 +5,15 @@ body * {
 
 body {
     margin: 0;
-    background-color: aqua;
+    background-image: linear-gradient( rgba(0,0,0,.5), rgba(0,0,0,.5) ), url('/Users/rmmoll23/Desktop/images/backgroundDogAdopt.jpg');
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding-left: 5%;
     padding-right: 5%;
+    font-family: 'Quattrocento', serif;
 }
-
-/* Index.html */
-fieldset {
-    padding: 0;
-    border: 0;
-    margin: 0;
-  }
 
 header {
     margin-top: 10%;
@@ -23,6 +21,7 @@ header {
     font-size: 50px;
     margin-bottom: 10%;
     text-align: center;
+    color: white;
 }
 
 #otherViews {
@@ -31,31 +30,12 @@ header {
     font-size: 50px;
     margin-bottom: 3%;
     text-align: center;
+    font-family: 'Shadows Into Light', cursive;
 }
 
-
-.login {
-  width: 300px;
-  padding: 40px;
-  border-radius: 5px;
-  background: white;
-  margin: 0 auto;
-}
-
-input[type="email"],
-input[type="password"],
-button [type="submit"]{
-  display: block;
-  width: 100%;
-  height: auto;
-  font-size: 12px;
-  text-align: left;
-  padding: 7px 7px 7px 7px;
-  border: 2px solid #e7e7e7;
-  border-radius: 3px;
-  background: white;
-  margin: 10px auto 20px;
-  transition: opacity 0.4s;
+.white {
+    color: white;
+    font-family: 'Shadows Into Light', cursive;
 }
 
 /* Home.html */
@@ -63,7 +43,8 @@ button [type="submit"]{
     width: 100%;
     padding: 25px 25px 25px 25px;
     border-radius: 5px;
-    background: white;
+    border: dashed white 2px;
+    color: white;
 }
 
 input[name="zipCode"], #breedList {
@@ -77,7 +58,6 @@ h2 {
 }
 
 .articles {
-    background-color: white;
     width: 25%;
     display: inline-block;
     margin-left: 5%;
@@ -85,10 +65,13 @@ h2 {
     border-radius: 5px;
     text-align: center;
     padding: 25px 25px 25px 25px;
+    color: white;
+    border: white dashed 2px;
 }
 
 a {
     margin-bottom: 30px;
+    color: white;
 }
 
 .searches {
@@ -115,23 +98,18 @@ a {
       text-align: center;
   }
 
-  .dogSearch, shelterSearchPage{
-      background-color: aqua;
-      padding-bottom: 40px;
-  }
-
-  .profile, .shelterProfile{
+  .profile, .shelterProfile, .itemProfile {
     border: 1px solid #E5E5E5;
     margin-bottom: 20px;
   }
   
-  .profile-image, .shelterProfileImage {
+  .profile-image, .shelterProfileImage, .itemImage {
     width: 100%;
     height: 150px;
     cursor: pointer;
   }
   
-  .profile-content, .shelterProfileContent{
+  .profile-content, .shelterProfileContent, .itemContent {
     padding: 20px;
     background-color: white;
     height: 180px;

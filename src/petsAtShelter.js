@@ -16,12 +16,17 @@ function displayShelterDogSearchResults(data) {
     else {
         const pets = data.petfinder.pets.pet.filter(pet=>{
             return pet.animal.$t.toLowerCase() === "dog"
-        })
+        });
+        // console.log(pets);
+        // if (pets === [ ]) {
+        //         console.log("hello");
+        //         const noDogs = `<p class="noDogs">There are no dogs at this shelter at the moment</p>`;
+        //         $('.shelterDogSearchResults').html(noDogs);
+        // }
         const shelterDogSearchResults = pets.map((pet, index) => {
-            console.log(pet);
             return renderDogSearchResults(pet,index);
         });
-        console.log(shelterDogSearchResults)
+        console.log(shelterDogSearchResults);
         Promise.all(shelterDogSearchResults)
         .then((arrResolvedPromises) => {
             $(".shelterDogSearchResults").html(arrResolvedPromises);
@@ -31,7 +36,7 @@ function displayShelterDogSearchResults(data) {
 }
 
 $(document).ready(function(){
-    $("shelterDogSearchResults").empty();
+    
     if(localStorage.getItem('lastPage') === 'shelter.html'){
         console.log('Pet Results Loaded');
         const shelterPageId = localStorage.getItem('shelterPageId');

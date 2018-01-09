@@ -254,7 +254,7 @@ function registerHandlers() {
     // Go to pet profile page
     $('.dogSearchResults').on('click', '.profile-image', function() {
         const profileId = $(this).parent().attr('id');
-    
+        localStorage.setItem('lastPage', 'pet.html');
         localStorage.setItem('profileId', profileId);
         window.location = 'profile.html';
     });
@@ -262,7 +262,7 @@ function registerHandlers() {
     // Pet profile page from shelter dog search
     $('.shelterDogSearchResults').on('click', '.profile-image', function() {
         const shelterDogProfileId = $(this).parent().attr('id');
-
+        localStorage.setItem('lastPage', 'getPetsAtShelter.html');
         localStorage.setItem('shelterDogProfileId', shelterDogProfileId);
         window.location = 'profile.html';
     });
