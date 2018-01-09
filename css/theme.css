@@ -38,6 +38,13 @@ header {
     font-family: 'Shadows Into Light', cursive;
 }
 
+.noDogs {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    border: white dashed 2px;
+}
+
 /* Home.html */
 .petSearch, .shelterSearch, .walMart{
     width: 100%;

@@ -17,12 +17,6 @@ function displayShelterDogSearchResults(data) {
         const pets = data.petfinder.pets.pet.filter(pet=>{
             return pet.animal.$t.toLowerCase() === "dog"
         });
-        // console.log(pets);
-        // if (pets === [ ]) {
-        //         console.log("hello");
-        //         const noDogs = `<p class="noDogs">There are no dogs at this shelter at the moment</p>`;
-        //         $('.shelterDogSearchResults').html(noDogs);
-        // }
         const shelterDogSearchResults = pets.map((pet, index) => {
             return renderDogSearchResults(pet,index);
         });
@@ -30,6 +24,11 @@ function displayShelterDogSearchResults(data) {
         Promise.all(shelterDogSearchResults)
         .then((arrResolvedPromises) => {
             $(".shelterDogSearchResults").html(arrResolvedPromises);
+            if ($(".shelterDogSearchResults").html() == "") {
+                console.log("hello");
+                const noDogs = `<p class="noDogs">There are no dogs in this shelter at the moment</p>`;
+                $('.shelterDogSearchResults').html(noDogs);
+        }
         })
     }
     
