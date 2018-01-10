@@ -116,13 +116,14 @@ function renderPetProfile(pet) {
     console.log(shotCheck);
     let shotStatus = " ";
     let spayNeuterStatus = " ";
-    if (shotCheck.constructor !== Array) {
-        shotStatus = pet.options.option.$t;
-        spayNeuterStatus = "not provided";
-    }
-    else if (shotCheck === undefined) {
+    if (shotCheck === undefined) {
+        console.log("noInfo");
         shotStatus = "information not provided";
         spayNeuterStatus = "information not provided";
+    }
+    else if (shotCheck.constructor !== Array) {
+        shotStatus = pet.options.option.$t;
+        spayNeuterStatus = "not provided";
     }
     else if (shotCheck !== undefined) {
         spayNeuterStatus = pet.options.option[0].$t;

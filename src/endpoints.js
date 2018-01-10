@@ -1,6 +1,6 @@
 // Petfinder methods
 // https://www.petfinder.com/developers/api-docs#methods
-const apiBaseUrl = 'http://api.petfinder.com';
+const apiBaseUrl = 'https://api.petfinder.com';
 const apiKey = '93fd0d1782907ee47a856e7d69a61895';
 const apiReturnFormat = 'json';
 
@@ -60,7 +60,7 @@ function getPetsAtShelter(shelterPageId, callback) {
     });
 }
 
-const walmartEndpoint = `http://api.walmartlabs.com/v1/search`;
+const walmartEndpoint = `https://api.walmartlabs.com/v1/search`;
 function getWalmartSearchResults(itemSearch, callback) {
     let startNum = 1;
     console.log(startNum);
