@@ -1,1 +1,1 @@
-<?php header( 'Location: dogAdopt/pages/index.html' ) ;  ?>
+<?php header( 'Location: /pages/home.html' ) ;  ?>
