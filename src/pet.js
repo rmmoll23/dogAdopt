@@ -21,7 +21,7 @@ function displayDogSearchResults(data) {
 
 $(document).ready(function() {
     
-    if(localStorage.getItem('lastPage') === 'home.html'){
+    if(localStorage.getItem('lastPage') === 'home.html' || localStorage.getItem('lastPage') === 'petProfile.html'){
         console.log("petPageLoaded");
         const zip = localStorage.getItem('petZip');
         const breed = localStorage.getItem('petBreed');

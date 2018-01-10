@@ -35,9 +35,10 @@ function displayShelterDogSearchResults(data) {
 
 $(document).ready(function(){
     
-    if(localStorage.getItem('lastPage') === 'shelter.html'){
+    if(localStorage.getItem('lastPage') === 'shelter.html' || localStorage.getItem('lastPage') === 'petProfile.html'){
         console.log('Pet Results Loaded');
         const shelterPageId = localStorage.getItem('shelterPageId');
         getPetsAtShelter(shelterPageId, displayShelterDogSearchResults);
+        localStorage.setItem('lastPage', 'petsAtShelter.html');
     }
 });

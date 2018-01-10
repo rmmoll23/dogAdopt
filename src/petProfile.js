@@ -19,4 +19,5 @@ $(document).ready(function() {
     const shelterPetId = localStorage.getItem('shelterDogProfileId');
     getPetProfile(shelterPetId, displayPetProfile);
     }
+    localStorage.setItem('lastPage', 'petProfile.html');
 });
