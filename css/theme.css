@@ -180,6 +180,15 @@ a {
     width: 100%;
 }
 
+#next {
+    float: right;
+    margin-bottom: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
 
 
 

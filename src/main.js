@@ -82,8 +82,6 @@ function renderWalmartSearchResults(items, index) {
     const imgURL = items.mediumImage;
     const productUrl = items.productUrl;
     const productPage = productUrl.slice(0, -14);
-    console.log(productPage);
-
 
     const walmartSearchResults = 
     `<div class="col-3">
@@ -250,7 +248,6 @@ function registerHandlers() {
         const itemSearch = item.val();
         // clear out the input
         item.val("");
-
         localStorage.setItem('itemSearch', itemSearch);
         window.location = 'walmartSearch.html';
     });

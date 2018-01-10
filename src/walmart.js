@@ -1,12 +1,14 @@
 function displayWalmartSearchResults(data) {
-    console.log(data.items);
-    console.log(data.items[0].name);
-    const walmartSearchResults = data.items.map((items, index) => renderWalmartSearchResults(items,index));
-    $(".itemReturn").html(walmartSearchResults);
-    if ($(".itemReturn").html() == "") {
-        console.log("hello");
+    console.log(data.numItems);
+    if (data.numItems === 0) {
         const noItems = `<p class="noDogs">There are no returned results for your search in the dog category</p>`;
         $('.itemReturn').html(noItems);
+        $('#next').addClass("hidden");
+    }
+    else {
+        const walmartSearchResults = data.items.map((items, index) => renderWalmartSearchResults(items,index));
+        $(".itemReturn").html(walmartSearchResults);
+        $('#next').removeClass("hidden");
     }
 }
 

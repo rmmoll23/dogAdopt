@@ -62,7 +62,15 @@ function getPetsAtShelter(shelterPageId, callback) {
 
 const walmartEndpoint = `http://api.walmartlabs.com/v1/search`;
 function getWalmartSearchResults(itemSearch, callback) {
-    $.getJSON(`${walmartEndpoint}?apiKey=zqx46w87nycunsgep2rxg9m4&format=json&categoryId=5440_202072&query=${itemSearch}&callback=?`)
+    let startNum = 1;
+    console.log(startNum);
+    $(".walmartSearch").on("click", "#next", function() {
+        startNum += 24;
+        const itemGet = localStorage.getItem('itemSearch');
+    console.log(itemGet);
+    getWalmartSearchResults(itemGet, displayWalmartSearchResults);
+    });
+    $.getJSON(`${walmartEndpoint}?apiKey=zqx46w87nycunsgep2rxg9m4&format=json&categoryId=5440_202072&query=${itemSearch}&start=${startNum}&numItems=24&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)

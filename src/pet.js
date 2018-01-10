@@ -26,5 +26,6 @@ $(document).ready(function() {
         const zip = localStorage.getItem('petZip');
         const breed = localStorage.getItem('petBreed');
         findPet(breed, zip, displayDogSearchResults);
+        localStorage.setItem('lastPage', 'pet.html');
     }
 }); 
