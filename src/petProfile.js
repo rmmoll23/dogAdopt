@@ -20,4 +20,5 @@ $(document).ready(function() {
     getPetProfile(shelterPetId, displayPetProfile);
     }
     localStorage.setItem('lastPage', 'petProfile.html');
+    
 });
