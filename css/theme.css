@@ -58,6 +58,10 @@ input[name="zipCode"], #breedList {
     margin-right: 10px;
 }
 
+#credit {
+    float: right;
+}
+
 h2 {
     text-align: center;
     margin: 0 0 25px 0;
