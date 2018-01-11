@@ -38,6 +38,13 @@ header {
     font-family: 'Shadows Into Light', cursive;
 }
 
+.noDogReturn {
+    color: white;
+    font-weight: bold;
+    border: white dashed 2px;
+}
+
+
 .noResults {
     color: white;
     font-weight: bold;
@@ -236,4 +243,8 @@ a {
     #breedlist {
         width: 150px;
     }
+
+    /* body {
+        background-size: contain;
+    } */
     }
