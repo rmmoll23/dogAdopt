@@ -8,17 +8,16 @@ function displayPetProfile(data) {
 }
 
 $(document).ready(function() {
-    if(localStorage.getItem('lastPage') === 'pet.html'){
-    console.log('Pet Profile Loaded');
-    const petId = localStorage.getItem('profileId');
-    console.log(petId);
-    getPetProfile(petId, displayPetProfile);
+    if(localStorage.getItem('lastPage') === 'pet.html' || localStorage.getItem('lastPage') === 'petProfile.html'){
+        console.log('Pet Profile Loaded');
+        const petId = localStorage.getItem('profileId');
+        getPetProfile(petId, displayPetProfile);
     }
     else if(localStorage.getItem('lastPage') === 'getPetsAtShelter.html'){
-    console.log('shelterPetProfile loaded');
-    const shelterPetId = localStorage.getItem('shelterDogProfileId');
-    getPetProfile(shelterPetId, displayPetProfile);
+        console.log('shelterPetProfile loaded');
+        const shelterPetId = localStorage.getItem('shelterDogProfileId');
+        getPetProfile(shelterPetId, displayPetProfile);
     }
+
     localStorage.setItem('lastPage', 'petProfile.html');
-    
 });

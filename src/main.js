@@ -276,6 +276,12 @@ function registerHandlers() {
         localStorage.setItem('shelterPageId', shelterPageId);
         window.location = 'getPetsAtShelter.html';
     });
+
+    $(".walmartSearch").on("click", "#next", function() {
+        const itemGet = localStorage.getItem('itemSearch');
+        console.log(itemGet);
+        getWalmartSearchResults(itemGet, displayWalmartSearchResults);
+    });
 }
 
 

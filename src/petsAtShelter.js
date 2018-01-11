@@ -34,8 +34,8 @@ function displayShelterDogSearchResults(data) {
 }
 
 $(document).ready(function(){
-    
-    if(localStorage.getItem('lastPage') === 'shelter.html' || localStorage.getItem('lastPage') === 'petProfile.html'){
+    const arrPages = ['shelter.html', 'petProfile.html', 'petsAtShelter.html'];
+    if(arrPages.includes(localStorage.getItem('lastPage'))){
         console.log('Pet Results Loaded');
         const shelterPageId = localStorage.getItem('shelterPageId');
         getPetsAtShelter(shelterPageId, displayShelterDogSearchResults);
