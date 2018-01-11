@@ -86,7 +86,7 @@ function renderWalmartSearchResults(items, index) {
     const walmartSearchResults = 
     `<div class="col-3">
         <div class="itemProfile">
-            <a href="${productPage}"><img aria-label="${itemName}" class="itemImage" src="${imgURL} alt="${itemName}/></a>
+            <a href="${productPage}"><img aria-label="${itemName} hit enter or click on image to view item page" class="itemImage" src="${imgURL} alt="${itemName}/></a>
             <div class="itemContent">
                 <h3>${itemName}</h3>
             </div>
