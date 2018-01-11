@@ -15,5 +15,5 @@ $(document).ready(function() {
     console.log('walmart page Loaded');
     const itemValue = localStorage.getItem('itemSearch');
     console.log(itemValue);
-    getWalmartSearchResults(itemValue, displayWalmartSearchResults); 
+    getWalmartSearchResults(itemValue, displayWalmartSearchResults, 'load'); 
 }); 

@@ -5,6 +5,7 @@ const apiKey = '93fd0d1782907ee47a856e7d69a61895';
 const apiReturnFormat = 'json';
 const walmartEndpoint = 'https://api.walmartlabs.com/v1/search';
 let startNum = 1;
+const incrementNum = 24;
 
 function getBreedList(callback){
     $.getJSON(`${apiBaseUrl}/breed.list?format=json&key=${apiKey}&animal=dog&callback=?`)
@@ -63,13 +64,26 @@ function getPetsAtShelter(shelterPageId, callback) {
 }
 
 function getWalmartSearchResults(itemSearch, callback, action) {
-    console.log(startNum)
+    if(action === 'next'){
+        startNum = startNum + incrementNum;
+    }
+    else if(action === 'prev' && startNum > 1){
+        startNum = startNum - incrementNum;
+    }
+
+
+    if(startNum > incrementNum){
+        $('#prev').removeClass("hidden");
+    }
+    else{
+        $('#prev').addClass("hidden");
+    }
+    console.log(startNum, action)
     $.getJSON(`${walmartEndpoint}?apiKey=zqx46w87nycunsgep2rxg9m4&format=json&categoryId=5440_202072&query=${itemSearch}&start=${startNum}&numItems=24&callback=?`)
     .done(callback)
     .fail(function(err){
         console.log(err)
     });
-    startNum = startNum + 24;
 }
     
 

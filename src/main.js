@@ -280,7 +280,13 @@ function registerHandlers() {
     $(".walmartSearch").on("click", "#next", function() {
         const itemGet = localStorage.getItem('itemSearch');
         console.log(itemGet);
-        getWalmartSearchResults(itemGet, displayWalmartSearchResults);
+        getWalmartSearchResults(itemGet, displayWalmartSearchResults, 'next');
+    });
+
+    $(".walmartSearch").on("click", "#prev", function() {
+        const itemGet = localStorage.getItem('itemSearch');
+        console.log(itemGet);
+        getWalmartSearchResults(itemGet, displayWalmartSearchResults, 'prev');
     });
 }
 
