@@ -36,7 +36,7 @@ function renderDogSearchResults (pets) {
             const dogSearchResults = 
             `<div class="col-3">
                 <div tabIndex="1" class="profile" id="${pets.id.$t}">
-                <img class="profile-image" src="${dogImg}" /> 
+                <img tabIndex="1" aria-label="hit enter or click on this image to view dog profile" class="profile-image" src="${dogImg}" /> 
                     <div class="profile-content">
                         <h3>${pets.name.$t}</h3>
                         <p>Age: ${pets.age.$t}</p> 
@@ -67,7 +67,7 @@ function renderShelterSearchResults(shelters) {
     const shelterSearchResults = 
     `<div class="col-3">
         <div tabIndex="1" class="shelterProfile" id="${shelters.id.$t}">
-            <img class="shelterProfileImage" src="https://s7d1.scene7.com/is/image/PETCO/1216511-right-1"/>
+            <img tabIndex="1" aria-label="hit enter or click on image to see dogs available at shelter"class="shelterProfileImage" src="https://s7d1.scene7.com/is/image/PETCO/1216511-right-1"/>
             <div class="shelterProfileContent">
                 <h3>${shelters.name.$t}</h3>
                 <p>${displayAddress}</p>
@@ -290,21 +290,21 @@ function registerHandlers() {
     });
 
     // Keyboard commands
-    $(".shelterDogSearchResults").on("keyup", ".profile", function(event) {
+    $(".shelterDogSearchResults").on("keyup", ".profile-image", function(event) {
         if (event.keyCode === 13) {
-        $(".profile-image").click();
+        $(this).click();
         }
     });
 
-    $(".dogSearchResults").on("keyup", ".profile", function(event) {
+    $(".dogSearchResults").on("keyup", ".profile-image", function(event) {
         if (event.keyCode === 13) {
-          $(".profile-image").click();
+          $(this).click();
         }
     });
     
-    $(".shelterSearchResults").on("keyup", ".shelterProfile", function(event) {
+    $(".shelterSearchResults").on("keyup", ".shelterProfileImage", function(event) {
         if (event.keyCode === 13) {
-            $('.shelterSearchResults').on('click', '.shelterProfileImage');
+          $(this).click();
         }
     });
 }
