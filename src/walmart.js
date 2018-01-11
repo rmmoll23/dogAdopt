@@ -1,6 +1,6 @@
 function displayWalmartSearchResults(data) {
     if (data.numItems === 0) {
-        const noItems = `<p class="noDogs">There are no returned results for your search in the dog category</p>`;
+        const noItems = `<p class="noResults">There are no returned results for your search in the dog category</p>`;
         $('.itemReturn').html(noItems);
         $('#next').addClass("hidden");
     }

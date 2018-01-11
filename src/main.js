@@ -35,7 +35,7 @@ function renderDogSearchResults (pets) {
 
             const dogSearchResults = 
             `<div class="col-3">
-                <div class="profile" id="${pets.id.$t}">
+                <div tabIndex="1" class="profile" id="${pets.id.$t}">
                 <img class="profile-image" src="${dogImg}" /> 
                     <div class="profile-content">
                         <h3>${pets.name.$t}</h3>
@@ -66,7 +66,7 @@ function renderShelterSearchResults(shelters) {
     }
     const shelterSearchResults = 
     `<div class="col-3">
-        <div class="shelterProfile" id="${shelters.id.$t}">
+        <div tabIndex="1" class="shelterProfile" id="${shelters.id.$t}">
             <img class="shelterProfileImage" src="https://s7d1.scene7.com/is/image/PETCO/1216511-right-1"/>
             <div class="shelterProfileContent">
                 <h3>${shelters.name.$t}</h3>
@@ -86,7 +86,7 @@ function renderWalmartSearchResults(items, index) {
     const walmartSearchResults = 
     `<div class="col-3">
         <div class="itemProfile">
-            <a href="${productPage}"><img class="itemImage" src="${imgURL}"/></a>
+            <a href="${productPage}"><img aria-label="${itemName}" class="itemImage" src="${imgURL} alt="${itemName}/></a>
             <div class="itemContent">
                 <h3>${itemName}</h3>
             </div>
@@ -174,7 +174,7 @@ function renderPetProfile(pet) {
             }
 
         const petProfile = `
-            <div id="profile" class="col-8">
+            <div tabIndex="1" id="profile" class="col-8">
             <h1>${pet.name.$t}</h1> 
             <h3>${extractBreeds(profileBreed)}</h3>
             <p>Spay/Neuter Status: ${spayNeuterStatus}</p>
@@ -183,7 +183,7 @@ function renderPetProfile(pet) {
             <h2>Story</h2>
             <p>${dogStory}</p>
             </div>
-            <div class="col-3mid" id="contactInfo">
+            <div tabIndex="1" class="col-3mid" id="contactInfo">
             <h2>Contact Info</h2>
             <p>${shelterNameProfile}</p>
             <p>Phone: ${pet.contact.phone.$t}</p>
@@ -287,6 +287,25 @@ function registerHandlers() {
         const itemGet = localStorage.getItem('itemSearch');
         console.log(itemGet);
         getWalmartSearchResults(itemGet, displayWalmartSearchResults, 'prev');
+    });
+
+    // Keyboard commands
+    $(".shelterDogSearchResults").on("keyup", ".profile", function(event) {
+        if (event.keyCode === 13) {
+        $(".profile-image").click();
+        }
+    });
+
+    $(".dogSearchResults").on("keyup", ".profile", function(event) {
+        if (event.keyCode === 13) {
+          $(".profile-image").click();
+        }
+    });
+    
+    $(".shelterSearchResults").on("keyup", ".shelterProfile", function(event) {
+        if (event.keyCode === 13) {
+            $('.shelterSearchResults').on('click', '.shelterProfileImage');
+        }
     });
 }
 

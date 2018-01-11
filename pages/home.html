@@ -17,30 +17,30 @@
  <header role="banner" id="otherViews">Adopt a Dog</header>
  <main role="main">
  <div class="searches">
-  <form role="form" class="petSearch">
+  <form role="form" tabIndex="1" class="petSearch">
       <h2>Find your new Companion!!</h2>
       <label for="breedList">Select a Breed</label>
-        <select id="breedList" required>
+        <select aria-label="Select from a list of dog breeds" id="breedList" required>
             
         </select><br><br>
       <label for="zipCode">Zip Code</label>
-      <input type="text" name="zipCode" id="zipCode" required/>
+      <input aria-label="Search for dogs with this zip code"type="text" name="zipCode" id="zipCode" required/>
       <button type="submit">Submit</button>
   </form> 
-  <form role="form" class="shelterSearch">
+  <form role="form" tabIndex="1" class="shelterSearch">
         <h2>Search Local Shelters</h2>
         <label for="zipCode">Zip Code</label>
-        <input type="text" name="zipCode" id="zipCode" required/>
+        <input aria-label="Enter zip code to search for local dog shelters" type="text" name="zipCode" id="zipCode" required/>
         <button type="submit">Submit</button>
   </form> 
-  <form role="form" class="walMart">
+  <form role="form" tabIndex="1" class="walMart">
             <h2>Prepare your Home for your new Pal!!</h2>
             <label for="walMart">Search for Pet Products</label>
-            <input type="text" name="walMart" id="walMart" required/>
+            <input aria-label="Walmart search input for pet products" type="text" name="walMart" id="walMart" required/>
             <button type="submit">Search</button>
   </form> 
 </div>
-<div class="articles">
+<div tabIndex="1" class="articles">
     <h2>Learn about Adoption!!</h2>
     <a href="https://bestfriends.org/resources/reasons-adopt-pet">Reasons to Adopt</a><br><br>
     <a href="https://www.nylabone.com/dog101/9-things-new-adoptive-dog-parents-should-know">Things to know when Adopting</a><br><br>
