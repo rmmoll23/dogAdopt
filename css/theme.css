@@ -232,4 +232,8 @@ a {
         left: 1%;
         cursor: pointer;
     }
+
+    #breedlist {
+        width: 175px;
+    }
     }
