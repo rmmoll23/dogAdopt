@@ -49,6 +49,14 @@
   .col-3, .col-3mid, .col-4, .col-6, .col-8, .col-12 {
     width: 100%;
   }
+
+  @media only screen and (max-width: 480px) {
+    .col-3, .col-3mid, .col-4, .col-6, .col-8, .col-12 {
+    width: 80%;
+    margin-right: 30px;
+    margin-left: 30px;
+    }
+  }
   
   
   /* Non-mobile, grid */
