@@ -21,8 +21,10 @@ function displayDogSearchResults(data) {
 
 $(document).ready(function() {
     
-    if(localStorage.getItem('lastPage') === 'home.html' || localStorage.getItem('lastPage') === 'petProfile.html'){
+    const arrPages = ['home.html', 'petProfile.html', 'pet.html'];
+    if(arrPages.includes(localStorage.getItem('lastPage'))){
         console.log("petPageLoaded");
+        console.log(localStorage);
         const zip = localStorage.getItem('petZip');
         const breed = localStorage.getItem('petBreed');
         findPet(breed, zip, displayDogSearchResults);

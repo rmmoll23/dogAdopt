@@ -34,11 +34,11 @@ function displayShelterDogSearchResults(data) {
 }
 
 $(document).ready(function(){
-    const arrPages = ['shelter.html', 'petProfile.html', 'petsAtShelter.html'];
+    const arrPages = ['shelter.html', 'shelterPetProfile.html', 'getPetsAtShelter.html'];
     if(arrPages.includes(localStorage.getItem('lastPage'))){
-        console.log('Pet Results Loaded');
+        console.log(localStorage);
         const shelterPageId = localStorage.getItem('shelterPageId');
         getPetsAtShelter(shelterPageId, displayShelterDogSearchResults);
-        localStorage.setItem('lastPage', 'petsAtShelter.html');
+        localStorage.setItem('lastPage', 'getPetsAtShelter.html');
     }
 });
