@@ -4,9 +4,11 @@ function displayDogSearchResults(data) {
     if (Object.keys(dogCheck).length === 0 && dogCheck.constructor === Object) {
        noBreedReturn(zipCode, displayDogSearchResults);
        console.log("no breed");
-       const noBreedResponse = `<p>The specific breed you searched for is not available in this area.</p>  
-       <p>Go back and try another breed or look at these dogs available for adoption in the area</p>`;
-       $(".noDogReturn").prepend(noBreedResponse);
+       const noBreedResponse = `<div class="noDogReturn">
+       <p>The specific breed you searched for is not available in this area.</p>  
+       <p>Go back and try another breed or look at these dogs available for adoption in the area</p>
+       </div>`;
+       $(".noDogReturnResponse").prepend(noBreedResponse);
     }
         const dogSearchResults = data.petfinder.pets.pet.map((pet, index) => renderDogSearchResults(pet,index));
     
