@@ -32,6 +32,8 @@ function findShelters(zipcode, callback){
 }
 
 function findPet(breed, zipcode, callback) {
+    console.log(breed);
+    console.log(zipcode);
     $.getJSON(`${apiBaseUrl}/pet.find?format=json&key=${apiKey}&animal=dog&location=${zipcode}&breed=${breed}&count=12&callback=?`)
     .done(callback)
     .fail(function(err){

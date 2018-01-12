@@ -216,13 +216,14 @@ function registerHandlers() {
     $('.petSearch').submit(event => {
         event.preventDefault();
         const queryBreed = $(event.currentTarget).find('#breedList');
-        const breed = queryBreed.val();
+        const breed = $('#breedList option:selected').text();
+        console.log(breed);
         const queryZip = $(event.currentTarget).find('#zipCode');
         const zipCode = queryZip.val();
         // clear out the input
         queryBreed.val("");
         queryZip.val("");
-        console.log(breed);
+        
 
         localStorage.setItem('petZip', zipCode);
         localStorage.setItem('petBreed', breed);
