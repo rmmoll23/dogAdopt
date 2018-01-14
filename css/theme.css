@@ -66,7 +66,8 @@ input[name="zipCode"], #breedList {
 }
 
 #credit {
-    float: right;
+    display: block;
+    text-align: center;
 }
 
 h2 {
@@ -208,6 +209,42 @@ a {
 
 
 @media only screen and (max-width: 480px) {
+    .searches {
+        width: 65%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    #contactInfo {
+        background-color: white;
+        border-radius: 5px;
+        padding: 25px 10px 25px 10px;
+        margin-bottom: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        float: none;
+        width: 80%;
+    }
+
+    #profile {
+        width: 80%;
+        margin-bottom: 20px;
+        padding: 10px 25px 25px 25px;
+        background-color: white;
+        border-radius: 5px;
+        margin-right: auto;
+        margin-left: auto; 
+        display: block;
+        float: none;
+    }
+
+    #profileImg {
+        width: 200px;   
+        height: 200px;
+        float: none;
+        display: block;
+        margin: 0 auto;
+    }
 
     .articles {
         width: 65%;
@@ -217,13 +254,15 @@ a {
         padding: 25px 25px 25px 25px;
         color: white;
         border: white dashed 2px;
-        margin-left: 0;
+        margin: 0 auto;
         position: relative;
     }
     
     #credit {
-        float: left;
+        text-align: center;
         margin-top: 10px;
+        display: block;
+        float: none;
     }
     
     .logoImg {
@@ -244,7 +283,4 @@ a {
         width: 150px;
     }
 
-    /* body {
-        background-size: contain;
-    } */
-    }
+}
