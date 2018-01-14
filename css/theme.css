@@ -209,6 +209,10 @@ a {
 
 
 @media only screen and (max-width: 480px) {
+    .profile-content {
+        height: auto;
+    }
+    
     .searches {
         width: 65%;
         margin: 0 auto;

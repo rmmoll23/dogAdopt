@@ -6,12 +6,18 @@ function displayShelterDogSearchResults(data) {
        console.log("1 result");
        let oneDogResult = data.petfinder.pets.pet;
        console.log(oneDogResult);
-       renderDogSearchResults(oneDogResult)
-        .then((singleDog) => {
-            if (singleDog.animal.$t.toLowerCase() === "dog") {
-                $(".shelterDogSearchResults").html(singleDog);
+            if (oneDogResult === undefined) {
+                const noDogsHere = `<p class="noResults">There are no dogs in this shelter at the moment</p>`;
+                $('.shelterDogSearchResults').html(noDogsHere);
             }
-        })
+            else {
+            renderDogSearchResults(oneDogResult)
+            .then((singleDog) => {
+                if (data.petfinder.pets.pet.animal.$t.toLowerCase() === "dog") {
+                    $(".shelterDogSearchResults").html(singleDog);
+                }
+            })
+        }
     }
     else {
         const pets = data.petfinder.pets.pet.filter(pet=>{
