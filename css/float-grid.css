@@ -52,7 +52,7 @@
 
   @media only screen and (max-width: 480px) {
     .col-3, .col-3mid, .col-4, .col-6, .col-8, .col-12 {
-    width: 65%;
+    width: 90%;
     margin: 0 auto;
     display: block;
     float: none;

@@ -1,5 +1,10 @@
 function displayDogSearchResults(data) {
+    if (data.petfinder.header.status.message.$t == "Invalid geographical location") {
+        alert("invalid geographical location");
+    }
+    else {
     const zipCode = localStorage.getItem('petZip');
+    console.log(data);
     let dogCheck = data.petfinder.pets;
     if (Object.keys(dogCheck).length === 0 && dogCheck.constructor === Object) {
        noBreedReturn(zipCode, displayDogSearchResults);
@@ -18,7 +23,8 @@ function displayDogSearchResults(data) {
     .then((arrResolvedPromises) => {
         $(".dogSearchResults").html(arrResolvedPromises);
     })
-}
+    }
+};
 
 
 $(document).ready(function() {
