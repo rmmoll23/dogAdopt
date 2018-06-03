@@ -19,26 +19,26 @@
     <img class="logoImg" src="../img/logoImg.jpg" alt="home page logo"/>
     <main role="main">
         <div class="searches">
-            <form role="form" tabIndex="1" class="petSearch">
+            <form role="form" autocomplete="off" tabIndex="1" class="petSearch">
                 <h2>Find your new Companion!!</h2>
                 <label for="breedList">Select a Breed</label>
-                    <select aria-label="Select from a list of dog breeds" id="breedList" required>
-                        
-                    </select><br><br>
+                <div class="autocomplete" style="width:300px">
+                    <input id="myInput" type="text" name="breedList" placeholder="Dog Breed">
+                </div>
                 <label for="zipCode">Zip Code</label>
-                <input aria-label="Search for dogs with this zip code" pattern="\d{5}-?(\d{4})?" type="text" name="zipCode" id="zipCode" required/>
+                <input aria-label="Search for dogs with this zip code" pattern="\d{5}-?(\d{4})?" type="text" name="zipCode" id="zipCode" placeholder="Zip code" required/>
                 <button type="submit">Submit</button>
             </form> 
             <form role="form" tabIndex="1" class="shelterSearch">
                     <h2>Search Local Shelters</h2>
                     <label for="zipCode">Zip Code</label>
-                    <input aria-label="Enter zip code to search for local dog shelters" pattern="\d{5}-?(\d{4})?" type="text" name="zipCode" id="zipCode" required/>
+                    <input aria-label="Enter zip code to search for local dog shelters" pattern="\d{5}-?(\d{4})?" type="text" name="zipCode" id="zipCode" placeholder="Zip code"required/>
                     <button type="submit">Submit</button>
             </form> 
             <form role="form" tabIndex="1" class="walMart">
                         <h2>Prepare your Home for your new Pal!!</h2>
                         <label for="walMart">Search for Pet Products</label>
-                        <input aria-label="Walmart search input for pet products" type="text" name="walMart" id="walMart" required/>
+                        <input aria-label="Walmart search input for pet products" type="text" name="walMart" id="walMart" placeholder="Search for dog products" required/>
                         <button type="submit">Search</button>
             </form> 
         </div>
