@@ -7,6 +7,9 @@ body * {
     overflow: scroll;
 }
 
+#petSearchZip {
+    margin-left: 20px;
+}
 
 body {
     margin: 0;
@@ -307,6 +310,10 @@ button {
         display: block;
         width: 80%;
         margin: 10px 0px;
+    }
+
+    #petSearchZip {
+        margin-left: 0px;
     }
 }
 
