@@ -16,10 +16,10 @@ dogProfilePage-The user can view the dog's story/background, shot history,and co
 The technology used for this application is html/css/javascript/jquery. 
 
 Screenshots: 
-<img width="1440" alt="screen shot 2018-01-10 at 10 00 43 pm" src="https://user-images.githubusercontent.com/33381445/34809517-a9530256-f652-11e7-880c-12d2c0a4fe6d.png">
-<img width="1440" alt="screen shot 2018-01-10 at 10 00 59 pm" src="https://user-images.githubusercontent.com/33381445/34809518-aab91c70-f652-11e7-8c99-ceecd3f999b7.png">
-<img width="1440" alt="screen shot 2018-01-10 at 10 01 06 pm" src="https://user-images.githubusercontent.com/33381445/34809519-ac0ff27e-f652-11e7-82a8-cea3abba863e.png">
-<img width="1440" alt="screen shot 2018-01-10 at 10 01 23 pm" src="https://user-images.githubusercontent.com/33381445/34809521-ad6f6078-f652-11e7-852b-a9e717988e85.png">
-![Uploading Screen Shot 2018-01-10 at 10.01.41 PM.png…]()
+
+<img width="1440" alt="screen shot 2018-01-10 at 10 00 43 pm" src="https://user-images.githubusercontent.com/33381445/41068814-dd3eaf62-69b0-11e8-8000-2cdf139fb940.jpg">
+<img width="1440" alt="screen shot 2018-01-10 at 10 00 59 pm" src="https://user-images.githubusercontent.com/33381445/41068873-253f0f28-69b1-11e8-8b00-3eee577f5ea6.jpg">
+<img width="1440" alt="screen shot 2018-01-10 at 10 01 06 pm" src="https://user-images.githubusercontent.com/33381445/41068881-317f3ac4-69b1-11e8-80b4-8fb64f32c262.jpg">
+<img width="1440" alt="screen shot 2018-01-10 at 10 01 23 pm" src="https://user-images.githubusercontent.com/33381445/41068883-33c93c12-69b1-11e8-90e4-c6a1b8011482.jpg">
 <img width="1440" alt="screen shot 2018-01-10 at 10 01 48 pm" src="https://user-images.githubusercontent.com/33381445/34809525-b090c454-f652-11e7-8ae4-046e1b5e5356.png">
 <img width="1440" alt="screen shot 2018-01-10 at 10 02 11 pm" src="https://user-images.githubusercontent.com/33381445/34809526-b2783d88-f652-11e7-90fc-851a2a2dccab.png">
