@@ -142,6 +142,10 @@ a {
     height: 180px;
     overflow: scroll;
   }
+
+  .shelterProfileContent h3 {
+      text-align: center;
+  }
   
   .profile-content h3 {
     margin-top: 0;
