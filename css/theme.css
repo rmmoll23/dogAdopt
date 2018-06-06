@@ -4,7 +4,12 @@ body * {
 
 .mainContainer {
     height: 800px;
-    overflow: scroll;
+    overflow: scroll; 
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 #petSearchZip {
